@@ -1,35 +1,35 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
-
+from .models import Post
 # Create your views here.
 
 
-posts=[
+# posts=[
 
-{
-'author':'Abdul Rehman',
-'title':'Blog Title 1',
-'content': "First blog content",
-'date_posted':'Aug 28, 2021',
+# {
+# 'author':'Abdul Rehman',
+# 'title':'Blog Title 1',
+# 'content': "First blog content",
+# 'date_posted':'Aug 28, 2021',
 
-},
-{
-'author':'Daniyal',
-'title':'Blog Title 2',
-'content': "Second blog content",
-'date_posted':'Aug 29, 2021',
+# },
+# {
+# 'author':'Daniyal',
+# 'title':'Blog Title 2',
+# 'content': "Second blog content",
+# 'date_posted':'Aug 29, 2021',
 
-},
-{
-'author':'Ammar',
-'title':'Blog Title 3',
-'content': "Third blog content",
-'date_posted':'Aug 30, 2021',
+# },
+# {
+# 'author':'Ammar',
+# 'title':'Blog Title 3',
+# 'content': "Third blog content",
+# 'date_posted':'Aug 30, 2021',
 
-}
+# }
 
 
-]
+# ]
 
 
 
@@ -40,8 +40,7 @@ def home(request):
 	# return HttpResponse('<h1>Blog Home<h1/>')
 
 	context={
-		'posts':posts,
-		'title':'Some Title Comes Here',
+		'posts':Post.objects.all()
 	}
 
 	return render(request,'blog/home.html',context)   #rendering a template
@@ -50,7 +49,7 @@ def home(request):
 
  
 def about(request):
-	return render(request,"blog/about.html",{})
+	return render(request,"blog/about.html",{'title':'About Title Page'})
 	# return HttpResponse("<h1>Blog About</h1>")  
 
 
